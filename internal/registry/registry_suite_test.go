@@ -77,4 +77,10 @@ var _ = Describe("Registry", func() {
 			testRegistry("legacy-ghcr", "ghcr.io/ckotzbauer-kubernetes-bot/sbom-git-operator-integration-test:1.0.0", true)
 		})
 	})
+
+	Describe("Storing image from DockerHub from Docker runtime", func() {
+		It("should work correctly", func() {
+			testRegistry("hub", "docker-pullable://docker.io/ckotzbauer/integration-test-image:1.0.0", false)
+		})
+	})
 })
