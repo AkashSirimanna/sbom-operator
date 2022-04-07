@@ -3,6 +3,7 @@ package registry
 import (
 	"bytes"
 	"fmt"
+	"strings"
 
 	"github.com/docker/cli/cli/config"
 	"github.com/docker/cli/cli/config/configfile"
@@ -38,7 +39,10 @@ func SaveImage(imagePath string, image kubernetes.ContainerImage) error {
 			return err
 		}
 
-		fullRef, err := parser.Parse(image.ImageID)
+		imageIDSlice := strings.Split(image.ImageID, "://")
+		trimmedImageID := imageIDSlice[len(imageIDSlice)-1]
+
+		fullRef, err := parser.Parse(trimmedImageID)
 		if err != nil {
 			return err
 		}

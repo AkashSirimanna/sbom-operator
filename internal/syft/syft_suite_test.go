@@ -130,6 +130,10 @@ var _ = Describe("Syft", func() {
 		It("node", func() {
 			testJsonSbom("node", "node@sha256:f527a6118422b888c35162e0a7e2fb2febced4c85a23d96e1342f9edc2789fec")
 		})
+
+		It("busybox", func() {
+			testSpdxSbom("busybox", "docker-pullable://busybox@sha256:532b0ea58f6f1270cffd77a260957ab3411ce576ddd05401aa142ffdee9d4876")
+		})
 	})
 
 	Describe("Catalogues correctly as Cyclonedx", func() {
@@ -144,6 +148,10 @@ var _ = Describe("Syft", func() {
 		It("node", func() {
 			testCyclonedxSbom("node", "node@sha256:f527a6118422b888c35162e0a7e2fb2febced4c85a23d96e1342f9edc2789fec")
 		})
+
+		It("busybox", func() {
+			testSpdxSbom("busybox", "docker-pullable://busybox@sha256:532b0ea58f6f1270cffd77a260957ab3411ce576ddd05401aa142ffdee9d4876")
+		})
 	})
 
 	Describe("Catalogues correctly as spdx-json", func() {
@@ -157,6 +165,10 @@ var _ = Describe("Syft", func() {
 
 		It("node", func() {
 			testSpdxSbom("node", "node@sha256:f527a6118422b888c35162e0a7e2fb2febced4c85a23d96e1342f9edc2789fec")
+		})
+
+		It("busybox", func() {
+			testSpdxSbom("busybox", "docker-pullable://busybox@sha256:532b0ea58f6f1270cffd77a260957ab3411ce576ddd05401aa142ffdee9d4876")
 		})
 	})
 })

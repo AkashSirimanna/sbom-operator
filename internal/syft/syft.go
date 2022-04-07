@@ -39,7 +39,10 @@ func (s Syft) WithVersion(version string) Syft {
 func (s *Syft) ExecuteSyft(img kubernetes.ContainerImage) (string, error) {
 	logrus.Infof("Processing image %s", img.ImageID)
 
-	fullRef, err := parser.Parse(img.ImageID)
+	imageIDSlice := strings.Split(img.ImageID, "://")
+	trimmedImageID := imageIDSlice[len(imageIDSlice)-1]
+
+	fullRef, err := parser.Parse(trimmedImageID)
 	if err != nil {
 		logrus.WithError(err).Errorf("Could not parse imageID %s", img.ImageID)
 		return "", err
